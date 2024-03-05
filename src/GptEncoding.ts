@@ -1,18 +1,15 @@
 /* eslint-disable no-param-reassign */
 import { BytePairEncodingCore } from './BytePairEncodingCore.js'
-import {
-  type EncodingName,
-  type ModelName,
-  chatModelParams,
-  modelToEncodingMap,
-} from './mapping.js'
-import {
-  type EncodingParams,
-  type GetMergeableRanksAsyncFn,
-  type GetMergeableRanksFn,
-  getEncodingParams,
-  getModelParamsAsync,
+import type { ChatMessage } from './ChatMessage.js'
+import { toChatMessageContent } from './ChatMessage.js'
+import type { EncodingName, ModelName } from './mapping.js'
+import { chatModelParams, modelToEncodingMap } from './mapping.js'
+import type {
+  EncodingParams,
+  GetMergeableRanksAsyncFn,
+  GetMergeableRanksFn,
 } from './modelParams.js'
+import { getEncodingParams, getModelParamsAsync } from './modelParams.js'
 import {
   EndOfPrompt,
   EndOfText,
@@ -31,12 +28,6 @@ export const ALL_SPECIAL_TOKENS = 'all'
 export interface EncodeOptions {
   allowedSpecial?: Set<string>
   disallowedSpecial?: Set<string>
-}
-
-export interface ChatMessage {
-  role?: 'system' | 'user' | 'assistant'
-  name?: string
-  content: string
 }
 
 export interface EncodeChatOptions {
@@ -187,7 +178,7 @@ export class GptEncoding {
    * Also mentioned in section 6 of this document: https://github.com/openai/openai-cookbook/blob/main/examples/How_to_count_tokens_with_tiktoken.ipynb
    */
   *encodeChatGenerator(
-    chat: Iterable<ChatMessage>,
+    chats: Iterable<ChatMessage>,
     model = this.modelName,
   ): Generator<number[], void, undefined> {
     if (!model) {
@@ -212,7 +203,13 @@ export class GptEncoding {
         : []
     const nameCache = new Map<string, number[]>()
 
-    for (const { role = 'system', name = role, content } of chat) {
+    for (const chat of chats) {
+      const {
+        role = 'system',
+        name = role,
+        content,
+      } = toChatMessageContent(chat)
+
       if (content === undefined) {
         throw new Error('Content must be defined for all messages.')
       }
