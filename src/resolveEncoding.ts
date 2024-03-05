@@ -1,4 +1,3 @@
-/* eslint-disable import/extensions */
 import { convertTokenBytePairEncodingFromTuples } from './convertTokenBytePairEncodingFromTuples.js'
 import type { EncoderMap } from './EncoderMap.js'
 import cl100k from './encodings/cl100k_base.js'
