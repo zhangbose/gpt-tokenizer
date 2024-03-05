@@ -5060,7 +5060,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"base64-js@npm:^1.3.1":
+"base64-js@npm:^1.3.1, base64-js@npm:^1.5.1":
   version: 1.5.1
   resolution: "base64-js@npm:1.5.1"
   checksum: 669632eb3745404c2f822a18fc3a0122d2f9a7a13f7fb8b5823ee19d1d2ff9ee5b52c53367176ea4ad093c332fd5ab4bd0ebae5a8e27917a4105a4cfc86b1005
@@ -8032,6 +8032,7 @@ __metadata:
   resolution: "gpt-tokenizer@workspace:."
   dependencies:
     "@niieani/scaffold": ^1.7.1
+    openai-chat-tokens: ^0.2.8
     rfc4648: ^1.5.2
     tsx: ^3.12.7
   languageName: unknown
@@ -9746,6 +9747,15 @@ __metadata:
   languageName: node
   linkType: hard
 
+"js-tiktoken@npm:^1.0.7":
+  version: 1.0.10
+  resolution: "js-tiktoken@npm:1.0.10"
+  dependencies:
+    base64-js: ^1.5.1
+  checksum: 94810d3b903d4ec6b1fbaf91b98870ee2c9f0b38de1d7924a0dfa17baaa083af84f31c37c3b1914bf37e6a012b099e922f548072ddf0c06d95511f9b72c8296d
+  languageName: node
+  linkType: hard
+
 "js-tokens@npm:^3.0.0 || ^4.0.0, js-tokens@npm:^4.0.0":
   version: 4.0.0
   resolution: "js-tokens@npm:4.0.0"
@@ -11352,6 +11362,15 @@ __metadata:
   dependencies:
     mimic-fn: ^2.1.0
   checksum: 2478859ef817fc5d4e9c2f9e5728512ddd1dbc9fb7829ad263765bb6d3b91ce699d6e2332eef6b7dff183c2f490bd3349f1666427eaba4469fba0ac38dfd0d34
+  languageName: node
+  linkType: hard
+
+"openai-chat-tokens@npm:^0.2.8":
+  version: 0.2.8
+  resolution: "openai-chat-tokens@npm:0.2.8"
+  dependencies:
+    js-tiktoken: ^1.0.7
+  checksum: e859ac2bec0b64883a8ae6878bd8f65a178895c4146b7d1fcf8d2d3cd7b7d7839d066e9b92b1cd0d93e0b7c4ff5835a6b03d7a1ce2dd38f1fd85e669488fcc6a
   languageName: node
   linkType: hard
 
