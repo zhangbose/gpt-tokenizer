@@ -11,6 +11,8 @@ export class EncoderMap implements Map<Uint8Array, number> {
           Array.from(encoder, ([key, value]) => [key.toString(), value])
         : undefined,
     )
+
+    hello
   }
   get size(): number {
     return this.encoder.size
